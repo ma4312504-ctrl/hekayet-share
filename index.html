@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="حكاية شارع — أخبار المنيا والقرى والمراكز">
+<title>حكاية شارع | موقع إخباري</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topline"><div class="container topline-inner"><span id="today">المنيا ومراكزها وقراها ومراكزها</span><span>صوت الشارع المنياوي</span></div></header>
+<header class="masthead"><div class="container masthead-inner">
+  <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
+  <a class="brand" href="#" aria-label="حكاية شارع الرئيسية"><span class="brand-mark">ن</span><span><b>حكاية شارع</b><small>المنيا حكاية كل شارع</small></span></a>
+  <div class="masthead-actions"><label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث في الأخبار..." aria-label="ابحث في الأخبار"></label><button class="admin-open" id="adminOpen">دخول المحررين</button></div>
+</div></header>
+<nav class="nav" id="nav"><div class="container nav-inner" id="categoryNav"></div></nav>
+<main class="container">
+  <div class="breaking"><b>عاجل</b><div id="ticker">تابع أحدث الأخبار والتغطيات من حكاية شارع</div></div>
+  <section class="hero-grid">
+    <article class="lead-story" id="leadStory"></article>
+    <aside class="side-stories"><div class="section-head"><h2>أحدث الأخبار</h2><span>تحديث مستمر</span></div><div id="latestSide" class="side-list"></div></aside>
+  </section>
+  <section class="media-section" id="mediaSection"><div class="section-head"><h2>فيديوهات وتقارير</h2><span>من الميدان</span></div><div id="mediaGrid" class="media-grid"></div></section>
+  <section id="allNewsSection"><div class="section-head"><h2 id="allNewsTitle">كل الأخبار</h2><span id="resultCount"></span></div><div id="newsGrid" class="news-grid"></div><p id="emptyState" class="empty hidden">لا توجد أخبار مطابقة لبحثك.</p></section>
+  <div class="load-more-wrap"><button id="loadMore" class="load-more">عرض المزيد</button></div>
+</main>
+<footer><div class="container footer-inner"><a class="brand footer-brand" href="#"><span class="brand-mark">ن</span><span><b>حكاية شارع</b><small>المنيا حكاية كل شارع</small></span></a><p>منصة تجريبية قابلة للتطوير — تحرَّ الدقة قبل النشر.</p><span>© <span id="year"></span> حكاية شارع</span></div></footer>
+<div class="modal hidden" id="articleModal" role="dialog" aria-modal="true"><div class="modal-card article-modal-card"><button class="close" data-close="articleModal">×</button><div id="articleContent"></div></div></div>
+<div class="modal hidden" id="loginModal" role="dialog" aria-modal="true"><div class="modal-card login-card"><button class="close" data-close="loginModal">×</button><div class="brand login-brand"><span class="brand-mark">ن</span><span><b>بوابة المحررين</b><small>إدارة المحتوى الإخباري</small></span></div><p class="muted">دخول تجريبي للوحة التحكم. لا تستخدم بيانات حقيقية في هذه النسخة.</p><form id="loginForm"><label>اسم المستخدم<input id="username" required autocomplete="username" placeholder="admin"></label><label>كلمة المرور<input id="password" type="password" required autocomplete="current-password" placeholder="admin123"></label><button class="primary-btn" type="submit">دخول للوحة التحكم</button></form><p class="hint">بيانات العرض: <b>admin</b> / <b>admin123</b></p></div></div>
+<div class="admin-panel hidden" id="adminPanel"><div class="admin-header"><div><b>لوحة إدارة حكاية شارع</b><small id="adminWelcome">إدارة الأخبار والمحررين</small></div><button id="logoutBtn" class="outline-btn">تسجيل الخروج</button></div><div class="admin-body"><aside class="admin-sidebar"><button class="admin-tab active" data-tab="posts">إدارة الأخبار</button><button class="admin-tab" data-tab="editors">حسابات المحررين</button><button class="admin-tab" data-tab="settings">إعدادات الموقع</button></aside><div class="admin-content">
+<section class="admin-view" id="view-posts"><div class="admin-title-row"><h2>الأخبار</h2><button class="primary-btn" id="newPostBtn">＋ خبر جديد</button></div><form id="postForm" class="post-form hidden"><input type="hidden" id="postId"><div class="form-grid"><label>عنوان الخبر *<input id="postTitle" required maxlength="140"></label><label>القسم<select id="postCategory"><option>المنيا ومراكزها</option><option>مصر</option><option>عالم</option><option>تعليم</option><option>رياضة</option><option>حوادث</option><option>تحقيقات</option><option>اقتصاد</option></select></label><label>اسم المحرر<input id="postAuthor" value="هيئة التحرير" required></label><label>رابط صورة (اختياري)<input id="postImage" type="url" placeholder="https://..."></label><label>رابط فيديو (اختياري)<input id="postVideo" type="url" placeholder="https://..."></label><label class="check-label"><input id="postFeatured" type="checkbox"> خبر رئيسي</label><label class="full">ملخص الخبر *<textarea id="postSummary" rows="2" required maxlength="300"></textarea></label><label class="full">نص الخبر *<textarea id="postBody" rows="7" required></textarea></label></div><div class="form-actions"><button class="primary-btn" type="submit">حفظ الخبر</button><button class="outline-btn" type="button" id="cancelPost">إلغاء</button></div></form><div id="adminPosts" class="admin-posts"></div></section>
+<section class="admin-view hidden" id="view-editors"><h2>حسابات المحررين</h2><p class="warning">هذه قائمة تجريبية محلية فقط. إنشاء حسابات حقيقية بصلاحيات آمنة يتطلب ربط قاعدة بيانات وخدمة مصادقة.</p><form id="editorForm" class="editor-form"><label>اسم المستخدم<input id="editorName" required minlength="3"></label><label>الدور<select id="editorRole"><option value="editor">محرر</option><option value="admin">مدير</option></select></label><label>كلمة مرور تجريبية<input id="editorPass" required minlength="6" type="password"></label><button class="primary-btn" type="submit">إضافة حساب تجريبي</button></form><div id="editorList"></div></section>
+<section class="admin-view hidden" id="view-settings"><h2>إعدادات الموقع</h2><label>اسم الموقع<input id="siteNameInput" value="حكاية شارع"></label><label>الشعار النصي<input id="siteTaglineInput" value="المنيا حكاية كل شارع"></label><button class="primary-btn" id="saveSettings">حفظ الإعدادات</button><p class="warning">الإعدادات والمحتوى في هذه النسخة محفوظة داخل المتصفح الحالي فقط.</p></section>
+</div></div><div class="admin-notice">نسخة أولية مجانية • لا تنشر بيانات حساسة أو كلمات مرور حقيقية</div></div>
+<script src="app.js"></script></body></html>
